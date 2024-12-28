@@ -10,7 +10,7 @@ categories:
 
 Redis offers commands for managing keys, such as `flushall` to clear all keys. In this post, however, we’ll focus on how to flush specific keys.
 
-### Step 1: Identify Keys
+## Step 1: Identify Keys
 
 Use `redis-cli --scan --pattern` to find keys matching a specific pattern:
 
@@ -20,7 +20,7 @@ redis-cli --scan --pattern "session:auth:token:*"
 
 This command will return all keys that start with `session:auth:token:`.
 
-### Step 2: Delete the Keys
+## Step 2: Delete the Keys
 
 Once you have the list of keys, use the `DEL` command to delete them. To automate this, use the following one-liner:
 
