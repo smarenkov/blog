@@ -157,3 +157,5 @@ Run the tunnel:
 cloudflared tunnel --config ~/.cloudflared/config-api.yml run
 cloudflared tunnel --config ~/.cloudflared/config-web.yml run
 ```
+
+Ensure your local services are running on the specified ports.
