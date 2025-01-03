@@ -25,7 +25,8 @@ To begin, create a new module in your project for managing database connections 
 
 ### `database.config.ts`
 ```ts
-dotenv.config({ path: '.env' });
+// Load .env file from project root directory
+dotenv.config({ path: '.env' }); // ,env file from root
 
 // Logging env variables to ensure proper loading of .env file
 console.log("Environment Variables:"); 
