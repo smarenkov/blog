@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Redis on Shimon Marenkov</title><link>https://smarenkov.blog.github.io/blog/categories/redis/</link><description>Recent content in Redis on Shimon Marenkov</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 28 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://smarenkov.blog.github.io/blog/categories/redis/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Flush Specific Keys in Redis</title><link>https://smarenkov.blog.github.io/blog/p/how-to-flush-specific-keys-in-redis/</link><pubDate>Sat, 28 Dec 2024 00:00:00 +0000</pubDate><guid>https://smarenkov.blog.github.io/blog/p/how-to-flush-specific-keys-in-redis/</guid><description>&lt;p>Redis offers commands for managing keys, such as &lt;code>flushall&lt;/code> to clear all keys. In this post, however, we’ll focus on how to flush specific keys.&lt;/p>
+&lt;h2 id="step-1-identify-keys">Step 1: Identify Keys
+&lt;/h2>&lt;p>Use &lt;code>redis-cli --scan --pattern&lt;/code> to find keys matching a specific pattern:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">redis-cli --scan --pattern &lt;span class="s2">&amp;#34;session:auth:token:*&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This command will return all keys that start with &lt;code>session:auth:token:&lt;/code>.&lt;/p>
+&lt;h2 id="step-2-delete-the-keys">Step 2: Delete the Keys
+&lt;/h2>&lt;p>Once you have the list of keys, use the &lt;code>DEL&lt;/code> command to delete them. To automate this, use the following one-liner:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">redis-cli --scan --pattern &lt;span class="s2">&amp;#34;session:auth:token:*&amp;#34;&lt;/span> &lt;span class="p">|&lt;/span> xargs redis-cli DEL
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Explanation&lt;/strong>:&lt;/p>
+&lt;ol>
+&lt;li>redis-cli &amp;ndash;scan &amp;ndash;pattern &amp;ldquo;pattern&amp;rdquo; fetches the matching keys.&lt;/li>
+&lt;li>xargs redis-cli DEL passes the fetched keys to the DEL command for deletion.&lt;/li>
+&lt;/ol></description></item></channel></rss>

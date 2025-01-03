@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on Shimon Marenkov</title><link>https://smarenkov.blog.github.io/blog/categories/docker/</link><description>Recent content in Docker on Shimon Marenkov</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 19 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://smarenkov.blog.github.io/blog/categories/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Running Docker Compose with Local MongoDB</title><link>https://smarenkov.blog.github.io/blog/p/running-docker-compose-with-local-mongodb/</link><pubDate>Sat, 19 Oct 2024 00:00:00 +0000</pubDate><guid>https://smarenkov.blog.github.io/blog/p/running-docker-compose-with-local-mongodb/</guid><description>&lt;p>If you want to run Docker Compose and use your local MongoDB, you&amp;rsquo;ll need to modify the MongoDB configuration to allow external connections.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Open the MongoDB configuration file &lt;code>mongod.conf&lt;/code>.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Edit the following line to enable connections from any IP address:&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">net&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c"># Other configurations...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c"># Enable connection from any IP address&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">bindIp&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="m">0.0.0.0&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ol start="3">
+&lt;li>Restart MongoDB&lt;/li>
+&lt;/ol></description></item><item><title>Running Docker Compose with Local RabbitMQ</title><link>https://smarenkov.blog.github.io/blog/p/running-docker-compose-with-local-rabbitmq/</link><pubDate>Sat, 19 Oct 2024 00:00:00 +0000</pubDate><guid>https://smarenkov.blog.github.io/blog/p/running-docker-compose-with-local-rabbitmq/</guid><description>&lt;p>If you want to run Docker Compose and use your local RabbitMQ instance, you&amp;rsquo;ll need to modify the RabbitMQ configuration to specify the IP address.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Open the RabbitMQ configuration file &lt;code>rabbitmq.conf&lt;/code>. If it doesn&amp;rsquo;t exist, create it in the RabbitMQ directory &lt;code>/etc/rabbitmq/&lt;/code>.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Add the following line to specify the IP address:&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">listeners.tcp.default = [your ip address]:5672
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ol start="3">
+&lt;li>Restart RabbitMQ&lt;/li>
+&lt;/ol></description></item></channel></rss>
